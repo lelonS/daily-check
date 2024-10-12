@@ -64,16 +64,16 @@ export class Week {
     return successDays;
   }
 
-  setPastDays(data) {
+  setDays(data) {
     // The data is a list of success days in the format: yyyy-mm-dd
     for (const day of this.days) {
-      if (day.date < this.today.date) {
-        if (data.includes(day.dateString)) {
-          day.setToSuccess();
-        } else {
-          day.setToFail();
-        }
+      if (data.includes(day.dateString)) {
+        day.setToSuccess();
+      } else if (day.date < this.today.date) {
+        // Past day that were not saved are considered failed
+        day.setToFail();
       } else if (day.date > this.today.date) {
+        // Future days
         day.setToFuture();
       }
     }

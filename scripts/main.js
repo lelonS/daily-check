@@ -5,7 +5,7 @@ const data = Data.read();
 const week = new Week();
 
 week.setupToday(onTodayClick);
-week.setPastDays(data);
+week.setDays(data);
 
 function onTodayClick() {
   const successDays = week.getSuccessDays();
