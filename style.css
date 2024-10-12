@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 2000px;
+  height: 100vh;
+}
+
+.day-column {
+  flex: 1;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-header {
+  padding: 10px;
+  background-color: #474747;
+  color: white;
+  text-align: center;
+}
+
+.day-today {
+  font-weight: bold;
+  background-color: #3469db;
+}
+
+.day-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+}
+
+.day-success {
+  background-color: #25974b;
+}
+
+.day-fail {
+  background-color: #db3434;
+}
+
+.day-future {
+  background-color: #474747;
+}
