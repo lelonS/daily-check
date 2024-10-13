@@ -8,7 +8,7 @@ export class Week {
     this.mondayDate = this.generateMondayDate();
 
     this.setUpDays();
-    this.today = this.getToday();
+    this.today = this.generateToday();
   }
 
   setUpDays() {
@@ -43,9 +43,10 @@ export class Week {
     return date;
   }
 
-  getToday() {
+  generateToday() {
     const today = new Date();
-    const dayIndex = (today.getDay() - 1) % 7;
+    const day = today.getDay();
+    const dayIndex = day === 0 ? 6 : day - 1; // If it's Sunday (0), move to the last day of the week
     return this.days[dayIndex];
   }
 
