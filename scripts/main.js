@@ -8,8 +8,14 @@ week.setupToday(onTodayClick);
 week.setDays(data);
 
 function onTodayClick() {
-  const successDays = week.getSuccessDays();
-  Data.write(successDays);
+  const todayString = week.today.dateString;
+  if (week.today.isSuccess && !data.includes(todayString)) {
+    data.push(todayString);
+  } else if (!week.today.isSuccess && data.includes(todayString)) {
+    const index = data.indexOf(todayString);
+    data.splice(index, 1);
+  }
+  Data.write(data);
 }
 
 window.week = week;
