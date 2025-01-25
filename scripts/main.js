@@ -6,6 +6,7 @@ const week = new Week();
 
 week.setupToday(onTodayClick);
 week.setDays(data);
+renderStreak();
 
 function onTodayClick() {
   const todayString = week.today.dateString;
@@ -16,6 +17,12 @@ function onTodayClick() {
     data.splice(index, 1);
   }
   Data.write(data);
+  renderStreak();
+}
+
+function renderStreak() {
+  const streak = Data.calculateStreak(week.today, data);
+  document.title = 'daily-check-streak: ' + streak;
 }
 
 window.week = week;

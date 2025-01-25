@@ -22,4 +22,23 @@ export class Data {
   static write(data) {
     localStorage.setItem('data', JSON.stringify(data));
   }
+
+  static calculateStreak(today, data) {
+    const dateToCheck = new Date(today.date);
+
+    let streak = today.isSuccess ? 1 : 0;
+    // This loop does not count today
+    for (let i = data.length - streak; i--; i >= 0) {
+      dateToCheck.setDate(dateToCheck.getDate() - 1)
+      const dateString = dateToCheck.toISOString().slice(0, 10);
+
+
+      // Streak broken
+      if (data[i] !== dateString) { break; }
+
+      streak++;
+    }
+
+    return streak;
+  }
 }
